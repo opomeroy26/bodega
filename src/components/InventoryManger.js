@@ -19,10 +19,15 @@ function InventoryManager() {
         
     }
 
+    function onItemRemoveClick(item){
+        //console.log("removing from reorder,", item)
+        setReorder(reorder.filter((reorderItem)=> reorderItem !== item))
+    }
+
     return(
         <div className="container">
             <CurrentInventoryList inventory={inventory} onItemClick={onItemClick}/>
-            <ReorderInventoryList reorder={reorder}/>
+            <ReorderInventoryList reorder={reorder} onItemRemoveClick={onItemRemoveClick}/>
         </div>
     );
 }
