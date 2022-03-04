@@ -19,12 +19,6 @@
       "price": 3.99
     },
     {
-      "id": 5,
-      "image": "./images/eggs.jpg",
-      "name": "Eggs",
-      "price": 1.99
-    },
-    {
       "id": 6,
       "image": "./images/spaghettios.jpeg",
       "name": "Spaghettios",
