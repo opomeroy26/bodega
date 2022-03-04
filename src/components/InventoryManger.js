@@ -24,10 +24,18 @@ function InventoryManager() {
         setReorder(reorder.filter((reorderItem)=> reorderItem !== item))
     }
 
+    function onDeleteClick(item, e){
+        console.log("Deleting item", item)
+        e.stopPropagation();
+        setReorder(reorder.filter((reorderItem)=> reorderItem !==item ))
+        setInventory(inventory.filter((inventoryItem) => inventoryItem !== item))
+        fetch(`http://localhost:8001/inventory/${item.id}`, {method: "DELETE"})
+    }
+
     return(
         <div className="container">
-            <CurrentInventoryList inventory={inventory} onItemClick={onItemClick}/>
-            <ReorderInventoryList reorder={reorder} onItemRemoveClick={onItemRemoveClick}/>
+            <CurrentInventoryList inventory={inventory} onItemClick={onItemClick} onDeleteClick={onDeleteClick}/>
+            <ReorderInventoryList reorder={reorder} onItemRemoveClick={onItemRemoveClick} onDeleteClick={onDeleteClick}/>
         </div>
     );
 }
